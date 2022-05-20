@@ -1,7 +1,20 @@
 from django.db import models
 
+
 class User(models.Model):
     pass
+
+
+class Directions(models.Model):
+    text = models.TextField(blank=False, max_length=500)
+    map = models.CharField(blank=True, max_length=1000)
+    last_edit = models.ForeignKey(User, on_delete=models.CASCADE)
+#    socialNetwork
+
+
+# class Donate(models.Model):
+#    text = models.TextField(blank=False, max_length=500)
+#    donators = models.ForeignKey()
 
 
 class Meet(models.Model):
@@ -10,6 +23,26 @@ class Meet(models.Model):
     curriculum = models.FileField(blank=True, upload_to="")
     profilePicture = models.ImageField(blank=False, upload_to="")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class News(models.Model):
+    date = models.DateField(blank=False)
+    title = models.CharField(blank=False, max_length=100)
+    url = models.URLField(blank=False, max_length=100)
+
+
+class Opportunities(models.Model):
+    image = models.ImageField(blank=False, upload_to="")
+    text = models.TextField(blank=False, max_length=500)
+
+
+class Publications(models.Model):
+    authors = models.CharField(blank=False, max_length=100)
+    title = models.CharField(blank=False, max_length=100)
+    date = models.DateField(blank=False, )
+    journal = models.CharField(blank=False, max_length=100)
+    doi = models.URLField(blank=False, max_length=1000)
+    pmid = models.IntegerField(blank=False, max_length=10)
 
 
 class Research(models.Model):
@@ -46,21 +79,5 @@ class Team(models.Model):
     memberType = models.CharField(blank=False, choices=memberChoices, max_length=3)
     profilePicture = models.ImageField(blank=False, upload_to="")
     status = models.CharField(blank=False, choices=statusChoices, max_length=2)
-
-
-class Publications(models.Model):
-    authors = models.CharField(blank=False, max_length=100)
-    title = models.CharField(blank=False, max_length=100)
-    date = models.DateField(blank=False, )
-    journal = models.CharField(blank=False, max_length=100)
-    doi = models.URLField(blank=False, max_length=1000)
-    pmid = models.IntegerField(blank=False, max_length=10)
-
-
-
-
-
-
-
 
 
