@@ -3,8 +3,13 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 
 
-#def index(request):
-#    return render(request, "administrator/index.html", {})
+class IndexView(TemplateView):
+    template_name = "administrator/index.html"
+
 
 class NewsView(TemplateView):
     template_name = "administrator/news.html"
+
+
+class AddNews(TemplateView):
+    template_name = "administrator/add_news.html"

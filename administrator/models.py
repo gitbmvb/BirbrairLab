@@ -42,7 +42,7 @@ class Publications(models.Model):
     date = models.DateField(blank=False, )
     journal = models.CharField(blank=False, max_length=100)
     doi = models.URLField(blank=False, max_length=1000)
-    pmid = models.IntegerField(blank=False, max_length=10)
+    pmid = models.IntegerField(blank=False)
 
 
 class Research(models.Model):
